@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="jumbotron">
+        <div style="text-align: center">
+            <div>
+                <h2>Add a WatchIt</h2>
+            </div>
+            <div class="container">
+                <div class="container">
+                    <div class="container">
+                        <div class="container">
+                            <div class="alert alert-danger" ng-show="addMovieError">
+                                {{addMovieError}}
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 25px" class="container input-group">
+                            <span class="btn btn-primary input-group-addon"><i class="glyphicon glyphicon-facetime-video" style="margin-left: 20px;margin-right: 20px"></i></span>
+                            <input style="text-align: center" type="text" class="form-control" ng-model="description" value=""
+                                   placeholder="Add a description to your Watch It">
+                            <input style="text-align: center" type="text" class="form-control" ng-model="title" value=""
+                                   placeholder="Add a title to your watchIt">
+                            <input style="text-align: center" type="text" class="form-control" ng-model="url" value=""
+                                   placeholder="Add link to your youtube Watch It">
+                            <span class="btn btn-warning input-group-addon" ng-click="addMovie()"><i class="glyphicon glyphicon-plus"
+                                                                                                     style="margin-left: 20px;margin-right: 20px"></i></span>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th style="text-align: center">Description</th>
+                            <th style="text-align: center">Url For WatchIt</th>
+                            <th style="text-align: center;" colspan="2">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="movie in movies">
+                            <td><button class="btn btn-default" data-toggle="modal" data-target="#myModal" ng-click="callMe(movie)">View Description</button></td>
+                            <td>
+                                <div class="btn btn-primary">
+                                    {{movie.title}}
+                                </div>
+
+                            </td>
+                            <td>
+                                <button class="btn btn-primary" ng-click="play(movie)">Start Watching</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" ng-click="delete(movie)">Delete</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header alert-info">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Showing description</h4>
+                </div>
+                <div class="modal-body">
+                    <p>{{forDescriptionMovie.description}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
